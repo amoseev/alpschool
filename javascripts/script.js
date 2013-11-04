@@ -1,6 +1,71 @@
+
+
 (function($) {
+
+
+
+
+
+    function showinfo(pointid){
+        var listpoints = [{id:"1" , x: "554" , y: "73" , header:"Вершины - пик" , arrow:"left" , descr:"Вершина в зависимости от формы может называться пиком, куполом, башней, иглой и т.д., однако многие значительные вершины вне зависимости от формы называют пиками (пик Ленина, пик Победы и т.д. — массивы имеющие гребневой характер)."},
+            {id:"2" , x: "401" , y: "572", header:"57 Вершины - пик" , arrow:"left" , descr:"Вершина в зависимости от формы может называться пиком, куполом, башней, иглой и т.д., однако многие значительные вершины вне зависимости от формы называют пиками (пик Ленина, пик Победы и т.д. — массивы имеющие гребневой характер)."}];
+        var scale = 788/1172;
+        idd=1;
+        var header = listpoints[idd]["header"];
+        var descr = listpoints[idd]["descr"];
+        var left = 20 + 5 + parseInt($('#reliefsource').position()["left"]) + scale*listpoints[idd]["x"]+"px";
+        var top = -30 + parseInt($('#reliefsource').position()["top"]) + scale*listpoints[idd]["y"]+"px";
+        var arrow_type = " .arrow-" + listpoints[idd]["arrow"];
+        var span_info = $('#tooltip .custominfo em');
+        span_info.text(header);
+        var span = $('#tooltip .custominfo');
+        span.html("<em>"+span_info.text()+"</em>"+descr);
+        $('#tooltip').css('left', left);
+        $('#tooltip').css("top", top);
+//надо масштабировать
+       /* $("#tooltip").position({
+            of: $('#tooltip').parent(),
+            my: 'left top',
+            at: 'left top',
+            offset: '300 300'
+        });*/
+
+        console.log(scale*listpoints[idd]["y"]);
+        var arrow = $('#tooltip'+arrow_type);
+        var arrow_left = -15,
+            arrow_top = 15;
+        arrow.css('left', arrow_left);
+        arrow.css('top', arrow_top);
+        arrow.css("visibility", "visible");
+        $('#tooltip').css("visibility", "visible");
+        /*if( $('#tooltip').is(':visible') )
+         {
+         //code here
+         alert(' visible');
+         }else{
+         alert('no visible');
+         }
+         */
+    }
+    function hideinfo(){
+        $('#tooltip').css("visibility", "hidden")
+        $('#tooltip .arrow').each(function(){
+            $(this).css("visibility", "hidden")
+        })//*/
+    }
 $(document).ready(function(){
 
+
+    $('#listpoint li').hover(
+        function() {
+            var pointid = $(this).attr('id');
+            pointid=1;
+            showinfo(pointid);
+        },
+        function() {
+            hideinfo();
+        } );
+/*
   // putting lines by the pre blocks
   $("pre").each(function(){
     var pre = $(this).text().split("\n");
@@ -47,6 +112,6 @@ $(document).ready(function(){
   $(".current-section a").click(function(){
     $(window).scrollTop(0);
     return false;
-  })
+  })//*/
 });
 })(jQuery)
