@@ -94,6 +94,10 @@ h3.title {
 
 
 
+#legend {
+    content:url('../images/sign.jpg');
+    width:100%
+}
 
 .d3-tip {
     line-height: 2;
