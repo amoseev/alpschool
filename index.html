@@ -8,7 +8,8 @@
     <link rel="stylesheet" href="stylesheets/pygment_trac.css"/>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <script type="text/javascript" src="javascripts/script.js"></script>
-
+    <script type="text/javascript" src="javascripts/jquery.tipsy.js"></script>
+    <script src="http://d3js.org/d3.v3.min.js"></script>
     <title>Alpschool</title>
     <meta name="description" content="">
 
@@ -25,7 +26,8 @@
     <div id="container">
         <div id="main" role="main">
         <article>
-            <img id="reliefsource" src="images/relief.jpg"/>
+            <div id="bodysvg"><svg position="relative"></svg></div>
+
             <h3 class="title">Условные обозначения:</h3>
 
             <div id="tooltip">
@@ -37,65 +39,67 @@
             </div>
 
         <ul id="listpoint">
-            <li id="point1"><span class="fullname">1) Вершины - пик</span></li>
-            <li id="point2"><span class="fullname">2) Игла</span></li>
-            <li id="point3"><span class="fullname">3) Столова гора</span></li>
-            <li id="point4"><span class="fullname">4) Зуб</span></li>
-            <li id="point5"><span class="fullname">5) Купол</span></li>
-            <li id="point6"><span class="fullname">6) Башня</span></li>
-            <li id="point7"><span class="fullname">7) Седловина</span></li>
-            <li id="point8"><span class="fullname">8) Долина</span></li>
-            <li id="point9"><span class="fullname">9) Висячая долина</span></li>
-            <li id="point10"><span class="fullname">10) Усьевая ступень</span></li>
-            <li id="point11"><span class="fullname">11) Кар</span></li>
-            <li id="point12"><span class="fullname">12) Кулуар</span></li>
-            <li id="point13"><span class="fullname">13) Конус выноса</span></li>
-            <li id="point14"><span class="fullname">14) Гребень</span></li>
-            <li id="point15"><span class="fullname">15) Ребро</span></li>
-            <li id="point16"><span class="fullname">16) Контрфорс</span></li>
-            <li id="point17"><span class="fullname">17) Взлет</span></li>
-            <li id="point18"><span class="fullname">18) Плечо</span></li>
-            <li id="point19"><span class="fullname">19) Жандарм</span></li>
-            <li id="point20"><span class="fullname">20) Склон - прямой</span></li>
-            <li id="point21"><span class="fullname">21) Склон - выпуклый</span></li>
-            <li id="point22"><span class="fullname">22) Склон - ступенчатый</span></li>
-            <li id="point23"><span class="fullname">23) Бараньи лбы</span></li>
-            <li id="point24"><span class="fullname">24) Скальный микрорельеф - трещины вертикальные</span></li>
-            <li id="point25"><span class="fullname">25) Скальный микрорельеф - трещины горизонтальные</span></li>
-            <li id="point26"><span class="fullname">26) Щель</span></li>
-            <li id="point27"><span class="fullname">27) Расщелина</span></li>
-            <li id="point28"><span class="fullname">28) Камин</span></li>
-            <li id="point29"><span class="fullname">29) Стена</span></li>
-            <li id="point30"><span class="fullname">30) Плита</span></li>
-            <li id="point31"><span class="fullname">31) Уступ</span></li>
-            <li id="point32"><span class="fullname">32) Полка</span></li>
-            <li id="point33"><span class="fullname">33) Балкон</span></li>
-            <li id="point34"><span class="fullname">34) Выступ</span></li>
-            <li id="point35"><span class="fullname">35) Карниз</span></li>
-            <li id="point36"><span class="fullname">36) Ледник - долинный</span></li>
-            <li id="point37"><span class="fullname">37) Ледник - каровый</span></li>
-            <li id="point38"><span class="fullname">38) Ледник - висячий</span></li>
-            <li id="point39"><span class="fullname">39) Ледник - возрожденный</span></li>
-            <li id="point40"><span class="fullname">40) Ледник - переметный</span></li>
-            <li id="point41"><span class="fullname">41) Ледник - покровный</span></li>
-            <li id="point42"><span class="fullname">42) Морена подвижная - поверхностная серединная</span></li>
-            <li id="point43"><span class="fullname">43) Морена подвижная - поверхностная боковая</span></li>
-            <li id="point44"><span class="fullname">44) Морена отложная - береговая</span></li>
-            <li id="point45"><span class="fullname">45) Морена отложная - конечная</span></li>
-            <li id="point46"><span class="fullname">46) Трещина - поперечная</span></li>
-            <li id="point47"><span class="fullname">47) Трещина - продольная</span></li>
-            <li id="point48"><span class="fullname">48) Трещина - радиальная</span></li>
-            <li id="point49"><span class="fullname">49) Ледопад</span></li>
-            <li id="point50"><span class="fullname">50) Бергшрунд</span></li>
-            <li id="point51"><span class="fullname">51) Рандклифт</span></li>
-            <li id="point52"><span class="fullname">52) Нунотак</span></li>
-            <li id="point53"><span class="fullname">53) Грот</span></li>
-            <li id="point54"><span class="fullname">54) Снежный мост</span></li>
-            <li id="point55"><span class="fullname">55) Лавинный конус</span></li>
-            <li id="point56"><span class="fullname">56) Озеро</span></li>
-            <li id="point57"><span class="fullname">57) Осыпь</span></li>
-            <li id="point58"><span class="fullname">58) Сераки</span></li>
+            <li id="point1"> <span class="nimber">1</span> <span class="name">Вершины - пик</span></li>
+            <li id="point2"> <span class="nimber">2</span> <span class="name">Игла</span></li>
+            <li id="point3"> <span class="nimber">3</span> <span class="name">Столова гора</span></li>
+            <li id="point4"> <span class="nimber">4</span> <span class="name">Зуб</span></li>
+            <li id="point5"> <span class="nimber">5</span> <span class="name">Купол</span></li>
+            <li id="point6"> <span class="nimber">6</span> <span class="name">Башня</span></li>
+            <li id="point7"> <span class="nimber">7</span> <span class="name">Седловина</span></li>
+            <li id="point8"> <span class="nimber">8</span> <span class="name">Долина</span></li>
+            <li id="point9"> <span class="nimber">9</span> <span class="name">Висячая долина</span></li>
+            <li id="point10"> <span class="nimber">10</span> <span class="name">Усьевая ступень</span></li>
+            <li id="point11"> <span class="nimber">11</span> <span class="name">Кар</span></li>
+            <li id="point12"> <span class="nimber">12</span> <span class="name">Кулуар</span></li>
+            <li id="point13"> <span class="nimber">13</span> <span class="name">Конус выноса</span></li>
+            <li id="point14"> <span class="nimber">14</span> <span class="name">Гребень</span></li>
+            <li id="point15"> <span class="nimber">15</span> <span class="name">Ребро</span></li>
+            <li id="point16"> <span class="nimber">16</span> <span class="name">Контрфорс</span></li>
+            <li id="point17"> <span class="nimber">17</span> <span class="name">Взлет</span></li>
+            <li id="point18"> <span class="nimber">18</span> <span class="name">Плечо</span></li>
+            <li id="point19"> <span class="nimber">19</span> <span class="name">Жандарм</span></li>
+            <li id="point20"> <span class="nimber">20</span> <span class="name">Склон - прямой</span></li>
+            <li id="point21"> <span class="nimber">21</span> <span class="name">Склон - выпуклый</span></li>
+            <li id="point22"> <span class="nimber">22</span> <span class="name">Склон - вогнутый</span></li>
+            <li id="point23"> <span class="nimber">23</span> <span class="name">Склон - ступенчатый</span></li>
+            <li id="point24"> <span class="nimber">24</span> <span class="name">Бараньи лбы</span></li>
+            <li id="point25"> <span class="nimber">25</span> <span class="name">Скальный микрорельеф - трещины вертикальные</span></li>
+            <li id="point26"> <span class="nimber">26</span> <span class="name">Скальный микрорельеф - трещины горизонтальные</span></li>
+            <li id="point27"> <span class="nimber">27</span> <span class="name">Щель</span></li>
+            <li id="point28"> <span class="nimber">28</span> <span class="name">Расщелина</span></li>
+            <li id="point29"> <span class="nimber">29</span> <span class="name">Камин</span></li>
+            <li id="point30"> <span class="nimber">30</span> <span class="name">Стена</span></li>
+            <li id="point31"> <span class="nimber">31</span> <span class="name">Плита</span></li>
+            <li id="point32"> <span class="nimber">32</span> <span class="name">Уступ</span></li>
+            <li id="point33"> <span class="nimber">33</span> <span class="name">Полка</span></li>
+            <li id="point34"> <span class="nimber">34</span> <span class="name">Балкон</span></li>
+            <li id="point35"> <span class="nimber">35</span> <span class="name">Выступ</span></li>
+            <li id="point36"> <span class="nimber">36</span> <span class="name">Карниз</span></li>
+            <li id="point37"> <span class="nimber">37</span> <span class="name">Ледник - долинный</span></li>
+            <li id="point38"> <span class="nimber">38</span> <span class="name">Ледник - каровый</span></li>
+            <li id="point39"> <span class="nimber">39</span> <span class="name">Ледник - висячий</span></li>
+            <li id="point40"> <span class="nimber">40</span> <span class="name">Ледник - возрожденный</span></li>
+            <li id="point41"> <span class="nimber">41</span> <span class="name">Ледник - переметный</span></li>
+            <li id="point42"> <span class="nimber">42</span> <span class="name">Ледник - покровный</span></li>
+            <li id="point43"> <span class="nimber">43</span> <span class="name"> Морена подвижная - поверхностная серединная</span></li>
+            <li id="point44"> <span class="nimber">44</span> <span class="name">Морена подвижная - поверхностная боковая</span></li>
+            <li id="point45"> <span class="nimber">45</span> <span class="name">Морена отложная - береговая</span></li>
+            <li id="point46"> <span class="nimber">46</span> <span class="name">Морена отложная - конечная</span></li>
+            <li id="point47"> <span class="nimber">47</span> <span class="name">Трещина - поперечная</span></li>
+            <li id="point48"> <span class="nimber">48</span> <span class="name">Трещина - продольная</span></li>
+            <li id="point49"> <span class="nimber">49</span> <span class="name">Трещина - радиальная</span></li>
+            <li id="point50"> <span class="nimber">50</span> <span class="name">Ледопад</span></li>
+            <li id="point51"> <span class="nimber">51</span> <span class="name">Бергшрунд</span></li>
+            <li id="point52"> <span class="nimber">52</span> <span class="name">Рандклифт</span></li>
+            <li id="point53"> <span class="nimber">53</span> <span class="name">Нунотак</span></li>
+            <li id="point54"> <span class="nimber">54</span> <span class="name">Грот</span></li>
+            <li id="point55"> <span class="nimber">55</span> <span class="name">Снежный мост</span></li>
+            <li id="point56"> <span class="nimber">56</span> <span class="name">Лавинный конус</span></li>
+            <li id="point57"> <span class="nimber">57</span> <span class="name">Озеро</span></li>
+            <li id="point58"> <span class="nimber">58</span> <span class="name">Осыпь</span></li>
+            <li id="point59"> <span class="nimber">59</span> <span class="name">Сераки</span></li>
         </ul>
+            <img src="../images/sign.jpg" width="100%">
         </article>
       </div>
     </div>
