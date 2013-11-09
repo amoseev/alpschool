@@ -178,18 +178,13 @@ $(document).ready(function(){
             points.filter(function(d) {return pointid==d.id }).style("opacity",0.05).attr("flash","none");
         });
 
-   /* points.append("svg:title")
-        .text(function(d, i) { return "My color is "  });
-*/
 
     $('svg circle').tipsy({
         gravity: function(){
             var d = this.__data__;
-            console.log(1);
             if(xScale(d.x) < ($('#bodysvg').width() - 350/*max width pytpsi*/)){
                 return 'w'
             }else{
-                console.log(2);
                 return 'e';
 
             }
