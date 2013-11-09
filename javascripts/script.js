@@ -183,7 +183,18 @@ $(document).ready(function(){
 */
 
     $('svg circle').tipsy({
-        gravity: 'w',
+        gravity: function(){
+            var d = this.__data__;
+            console.log(1);
+            if(xScale(d.x) < ($('#bodysvg').width() - 350/*max width pytpsi*/)){
+                return 'w'
+            }else{
+                console.log(2);
+                return 'e';
+
+            }
+
+        } ,
         html: true,
         title: function() {
 
