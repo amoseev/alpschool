@@ -25,13 +25,13 @@
     <div id="container">
       <div id="main" role="main">
         <article>
-            <img src="http://cs323722.vk.me/v323722615/777f/M-VADkJ1zD8.jpg/>
+            <img src="https://pp.vk.me/c636419/v636419549/28f64/yd-WBbLM6jM.jpg/>
         </article>
       </div>
     </div>
     <footer>
       <div class="owner">
-      <p><a href="http://vk.com/club45985223" class="avatar"><img src="http://cs323722.vk.me/v323722615/777f/M-VADkJ1zD8.jpg" width="64" height="64"/></a><a href="http://vk.com/club45985223">Школа альпинизма - Пермь</a></p>
+      <p><a href="https://vk.com/alpclubperm" class="avatar"><img src="https://pp.vk.me/c636419/v636419549/28f64/yd-WBbLM6jM.jpg" width="64" height="64"/></a><a href="https://vk.com/alpclubperm">Пермская Школа Альпинизма</a></p>
       </div>
     </footer>
   </div>

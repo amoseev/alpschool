@@ -139,9 +139,21 @@ $(document).ready(function(){
 
     ];
 
-    $('#bodysvg').height($('#bodysvg').width() / 1883 * 1172) ;
-    var xScale = d3.scale.linear().domain([0,1883]).range([0,$('#bodysvg').width()]);
-    var yScale = d3.scale.linear().domain([0,1172]).range([0,$('#bodysvg').height()]);
+    function setScale()
+    {
+        var imgWidth = 1883;
+        var imgHeight = 1172;
+        $('#bodysvg').height($('#bodysvg').width() / 1883 * 1172) ;
+        $('#bodysvg svg').height($('#bodysvg').height()) ;
+        $('#bodysvg svg').width($('#bodysvg').width()) ;
+
+        // да, глобальные. и пофиг)
+        xScale = d3.scale.linear().domain([0,imgWidth]).range([0,$('#bodysvg').width()]);
+        yScale = d3.scale.linear().domain([0,imgHeight]).range([0,$('#bodysvg').height()]);
+    }
+
+    setScale();
+
 
     function flash(pointid){
             points.filter(function(d) {return (pointid==d.id && d3.select(this).attr("flash")=="none") }).style("opacity",0.05);
@@ -157,6 +169,7 @@ $(document).ready(function(){
                     flash(pointid);
                 });
     }
+
 
 
     var points = svg.selectAll(".point")
@@ -201,9 +214,7 @@ $(document).ready(function(){
     });
 
     $( window ).resize(function() {
-        $('#bodysvg').height($('#bodysvg').width() / 1883 * 1172) ;
-        xScale = d3.scale.linear().domain([0,1883]).range([0,$('#bodysvg').width()]);
-        yScale = d3.scale.linear().domain([0,1172]).range([0,$('#bodysvg').height()]);
+        setScale();
         points
             .attr("cx", function(d) { return xScale(d.x) ; })
             .attr("cy", function(d) { return yScale(d.y); })
@@ -212,8 +223,10 @@ $(document).ready(function(){
 
 
   $("#listpoint li").hover(
+
       function() {
           var pointid =  $(this).attr('id').replace("point","");
+          console.log(points.filter(function(d) {return pointid==d.id }));
           points.filter(function(d) {return pointid==d.id }).style("opacity",0.85).attr("flash","yes")
           flash(pointid);
       },function(){
@@ -223,4 +236,4 @@ $(document).ready(function(){
       });
 
 });
-})(jQuery)
+})(jQuery);
