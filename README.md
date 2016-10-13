@@ -1,5 +1,8 @@
 alpschool
-http://fantyk.github.io/alpschool/
+http://amoseev.github.io/alpschool/
 Школа альпинизма - Пермь
-http://vk.com/club45985223
+https://vk.com/alpclubperm
 =========
+
+Ссылка по теме:
+http://relef.site44.com
